@@ -1,0 +1,117 @@
+{
+	"info": {
+		"name": "challenge-ca heroku",
+		"_postman_id": "d090fe11-95ec-cf0d-5dbb-f04036d5921a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://challenge-roberto.herokuapp.com/rest/bankslips",
+					"protocol": "https",
+					"host": [
+						"challenge-roberto",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"rest",
+						"bankslips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://challenge-roberto.herokuapp.com/rest/bankslips/5fa9c313-c286-402f-8646-5688970c574c",
+					"protocol": "https",
+					"host": [
+						"challenge-roberto",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"rest",
+						"bankslips",
+						"5fa9c313-c286-402f-8646-5688970c574c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"due_date\":\"2018-07-01\",\n \"total_in_cents\":\"54213541\",\n \"customer\":\"José Silva\",\n \"status\":\"PENDING\"\n}"
+				},
+				"url": {
+					"raw": "https://challenge-roberto.herokuapp.com/rest/bankslips",
+					"protocol": "https",
+					"host": [
+						"challenge-roberto",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"rest",
+						"bankslips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"status\":\"PAID\"\n}"
+				},
+				"url": {
+					"raw": "https://challenge-roberto.herokuapp.com/rest/bankslips/5fa9c313-c286-402f-8646-5688970c574c",
+					"protocol": "https",
+					"host": [
+						"challenge-roberto",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"rest",
+						"bankslips",
+						"5fa9c313-c286-402f-8646-5688970c574c"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}
