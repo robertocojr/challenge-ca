@@ -12,7 +12,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
@@ -20,8 +23,10 @@ import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.HSQL)
 public class BankslipsControllerTest {
 
     @Autowired
@@ -29,9 +34,9 @@ public class BankslipsControllerTest {
 
     @BeforeClass
     public static void setup() {
-        String port = System.getProperty("server.port");
+        String port = System.getProperty("{server.port}");
         if (port == null) {
-            RestAssured.port = Integer.valueOf(8080);
+            RestAssured.port = 9292;
         } else {
             RestAssured.port = Integer.valueOf(port);
         }
@@ -108,13 +113,15 @@ public class BankslipsControllerTest {
         BankslipsVO persisted = bankslipsService.add(entity);
 
         BankslipsUpdateVO updateVO = new BankslipsUpdateVO(BankslipsStatusEnum.PAID);
-        RestAssured.given().contentType("application/json").when().body(updateVO).put("/rest/bankslips/" + persisted.code).then().statusCode(200);
+        RestAssured.given().contentType("application/json").when().body(updateVO).put("/rest/bankslips/" + persisted.code).then()
+                .statusCode(200);
     }
 
     @Test
     public void add() {
         BankslipsVO entity = new BankslipsVO(new Date(), BigDecimal.valueOf(1002220000L), "Teste", BankslipsStatusEnum.PENDING);
-        RestAssured.given().contentType("application/json").when().body(entity).post("/rest/bankslips").then().statusCode(201);
+        RestAssured.given().contentType("application/json").when().body(entity).post("/rest/bankslips").then()
+                .statusCode(201);
     }
 
     @Test
