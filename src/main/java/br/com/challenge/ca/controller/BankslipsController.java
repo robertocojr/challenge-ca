@@ -1,13 +1,16 @@
 package br.com.challenge.ca.controller;
 
-import br.com.challenge.ca.entity.BankslipsEntity;
 import br.com.challenge.ca.service.BankslipsService;
 import br.com.challenge.ca.vo.BankslipsUpdateVO;
+import br.com.challenge.ca.vo.BankslipsVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping(path = "/rest/bankslips")
 public class BankslipsController {
@@ -16,12 +19,12 @@ public class BankslipsController {
     private BankslipsService bankslipsService;
 
     @GetMapping
-    public List<BankslipsEntity> list() {
+    public List<BankslipsVO> list() {
         return bankslipsService.getAll();
     }
 
     @GetMapping("{id}")
-    public BankslipsEntity byId(@PathVariable(name = "id") final String code) {
+    public BankslipsVO byId(@PathVariable(name = "id") final String code) {
         return bankslipsService.getByCode(code);
     }
 
@@ -32,7 +35,8 @@ public class BankslipsController {
     }
 
     @PostMapping
-    public BankslipsEntity add(@RequestBody BankslipsEntity bankslips) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public BankslipsVO add(@RequestBody(required = false) BankslipsVO bankslips) {
 
         return bankslipsService.add(bankslips);
     }

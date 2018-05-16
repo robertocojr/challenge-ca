@@ -1,8 +1,6 @@
 package br.com.challenge.ca.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import br.com.challenge.ca.enumeration.BankslipsStatusEnum;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,24 +13,19 @@ import java.util.UUID;
 @Table(name = "bankslips")
 public class BankslipsEntity {
 
-    @JsonIgnore
     @Id
     @GeneratedValue
     @Column(name = "id")
     private Long id;
 
-    @JsonProperty("id")
     @Column(name = "code")
     private String code;
 
-    @JsonProperty("due_date")
-    @JsonFormat(pattern = "yyyy-mm-dd")
     @NotNull
     @Temporal(TemporalType.DATE)
     @Column(name = "due_date")
     private Date dueDate;
 
-    @JsonProperty("total_in_cents")
     @NotNull
     @Column(name = "total_in_cents")
     private BigDecimal totalInCents;
@@ -41,21 +34,21 @@ public class BankslipsEntity {
     @Column(name = "customer")
     private String customer;
 
-    //TODO criar enum
-    @NotBlank
+    @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private BankslipsStatusEnum status;
 
-    private BankslipsEntity() {
+    public BankslipsEntity() {
         this.code = UUID.randomUUID().toString();
     }
 
-    public BankslipsEntity(@NotNull Date dueDate, @NotNull BigDecimal totalInCents, @NotBlank String customer) {
+    public BankslipsEntity(@NotNull Date dueDate, @NotNull BigDecimal totalInCents, @NotBlank String customer, @NotNull BankslipsStatusEnum status) {
         this.code = UUID.randomUUID().toString();
         this.dueDate = dueDate;
         this.totalInCents = totalInCents;
         this.customer = customer;
-        this.status = "PENDING";
+        this.status = status;
     }
 
     public Long getId() {
@@ -98,11 +91,11 @@ public class BankslipsEntity {
         this.customer = customer;
     }
 
-    public String getStatus() {
+    public BankslipsStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BankslipsStatusEnum status) {
         this.status = status;
     }
 

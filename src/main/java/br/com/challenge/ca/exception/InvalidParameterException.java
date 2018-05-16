@@ -1,13 +1,10 @@
 package br.com.challenge.ca.exception;
 
-import org.springframework.http.HttpStatus;
+import br.com.challenge.ca.enumeration.ErrorEnum;
 
-import javax.xml.ws.http.HTTPException;
+public class InvalidParameterException extends BaseException {
 
-public class InvalidParameterException extends HTTPException {
-
-    public InvalidParameterException() {
-        super(HttpStatus.ACCEPTED.value());
+    public InvalidParameterException(final ErrorEnum errorEnum) {
+        super(errorEnum);
     }
-
 }

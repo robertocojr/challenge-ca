@@ -1,12 +1,10 @@
 package br.com.challenge.ca.exception;
 
-import org.springframework.http.HttpStatus;
+import br.com.challenge.ca.enumeration.ErrorEnum;
 
-import javax.xml.ws.http.HTTPException;
-
-public class BankslipsNotFoundException extends HTTPException {
+public class BankslipsNotFoundException extends BaseException {
 
     public BankslipsNotFoundException() {
-        super(HttpStatus.NOT_FOUND.value());
+        super(ErrorEnum.BANKSLIPS_NOT_FOUND);
     }
 }

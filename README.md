@@ -15,7 +15,7 @@ O objetivo dessa api e disponibilizar uma maneira simples e segura para cuidar d
 
 <code>./gradlew clean build</code>
 
-#E xecução
+# Execução
 
 <code>./gradlew bootRun</code>
 
