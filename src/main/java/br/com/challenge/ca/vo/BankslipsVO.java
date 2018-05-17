@@ -19,7 +19,6 @@ public class BankslipsVO {
 
     @JsonProperty("due_date")
     @Temporal(TemporalType.DATE)
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "Brazil/East")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Brazil/East")
     public Date dueDate;
 

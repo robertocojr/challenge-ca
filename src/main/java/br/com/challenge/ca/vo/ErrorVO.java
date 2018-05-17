@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ErrorVO implements Serializable{
+public class ErrorVO implements Serializable {
 
     public static final int DEFAULT_ERROR_CODE = 999;
 
