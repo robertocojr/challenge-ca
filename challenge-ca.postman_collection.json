@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "0fd51976-6648-4f61-8f76-5f4628a659af",
+		"name": "challenge-ca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/rest/bankslips",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"bankslips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/rest/bankslips/63dd3341-7420-45d4-b12f-90c058125123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"bankslips",
+						"63dd3341-7420-45d4-b12f-90c058125123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"due_date\":\"2018-02-01\",\n \"total_in_cents\":\"100\",\n \"customer\":\"José Silva\",\n \"status\":\"PENDING\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/bankslips",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"bankslips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"status\":\"CANCELED\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/bankslips/fe0822a9-0616-4b31-a5dd-2d2fbfd14086",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"bankslips",
+						"fe0822a9-0616-4b31-a5dd-2d2fbfd14086"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
