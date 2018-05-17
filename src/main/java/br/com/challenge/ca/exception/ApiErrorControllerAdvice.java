@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.*;
 @ControllerAdvice(annotations = RestController.class)
 public class ApiErrorControllerAdvice {
 
-    @ExceptionHandler(value = { BankslipsNotFoundException.class })
+    @ExceptionHandler(value = {BankslipsNotFoundException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     public ErrorVO notFoundRequest(final BankslipsNotFoundException exception) {
         return buildErrorVO(exception);
     }
 
-    @ExceptionHandler(value = { InvalidParameterException.class })
+    @ExceptionHandler(value = {InvalidParameterException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ErrorVO invalidParameterRequest(final InvalidParameterException exception) {
         return buildErrorVO(exception);
     }
 
-    @ExceptionHandler(value = { BankslipsInvalidFieldException.class })
+    @ExceptionHandler(value = {BankslipsInvalidFieldException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ResponseBody
     public ErrorVO invalidFieldRequest(final BankslipsInvalidFieldException exception) {

@@ -2,7 +2,7 @@ package br.com.challenge.ca.exception;
 
 import br.com.challenge.ca.enumeration.ErrorEnum;
 
-public class BaseException extends RuntimeException{
+public class BaseException extends RuntimeException {
 
     private ErrorEnum error;
 

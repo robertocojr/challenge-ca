@@ -1,4 +1,4 @@
 package br.com.challenge.ca.exception;
 
-public class TaxInvalidParameterException extends RuntimeException{
+public class TaxInvalidParameterException extends RuntimeException {
 }

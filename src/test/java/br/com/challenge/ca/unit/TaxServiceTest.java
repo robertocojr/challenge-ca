@@ -15,31 +15,31 @@ public class TaxServiceTest {
     private TaxService taxService = new TaxService();
 
     @Test
-    public void incrementPercent(){
+    public void incrementPercent() {
         BigDecimal result = taxService.incrementPercent(BigDecimal.TEN, BigDecimal.ONE);
 
         Assert.assertEquals(new BigDecimal("10.10"), result);
     }
 
     @Test
-    public void incrementPercentValueZero(){
+    public void incrementPercentValueZero() {
         BigDecimal result = taxService.incrementPercent(BigDecimal.ONE, BigDecimal.ZERO);
 
         Assert.assertEquals(BigDecimal.ONE, result);
     }
 
     @Test(expected = TaxInvalidParameterException.class)
-    public void incrementPercentValueNull(){
+    public void incrementPercentValueNull() {
         taxService.incrementPercent(null, BigDecimal.ONE);
     }
 
     @Test(expected = TaxInvalidParameterException.class)
-    public void incrementPercentPercentNull(){
+    public void incrementPercentPercentNull() {
         taxService.incrementPercent(BigDecimal.ONE, null);
     }
 
     @Test(expected = TaxInvalidParameterException.class)
-    public void incrementPercentValueNegative(){
+    public void incrementPercentValueNegative() {
         taxService.incrementPercent(new BigDecimal("-100"), BigDecimal.ONE);
     }
 

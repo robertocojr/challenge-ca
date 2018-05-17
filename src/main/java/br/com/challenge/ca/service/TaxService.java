@@ -13,8 +13,8 @@ public class TaxService {
     private final static Logger LOGGER = LoggerFactory.getLogger(TaxService.class);
 
     public BigDecimal incrementPercent(final BigDecimal value, final BigDecimal percent) {
-        if(value == null || percent == null
-                || value.compareTo(BigDecimal.ZERO) == -1 || percent.compareTo(BigDecimal.ZERO) == -1){
+        if (value == null || percent == null
+                || value.compareTo(BigDecimal.ZERO) == -1 || percent.compareTo(BigDecimal.ZERO) == -1) {
             LOGGER.error("Valor invalido para calculo de taxas, value={}, percent={}", value, percent);
             throw new TaxInvalidParameterException();
         }
