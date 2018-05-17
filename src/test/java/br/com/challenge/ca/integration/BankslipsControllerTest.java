@@ -101,6 +101,17 @@ public class BankslipsControllerTest {
     }
 
     @Test
+    public void updateStatusPending() {
+        BankslipsVO entity = new BankslipsVO(new Date(), BigDecimal.valueOf(1000000L), "Fulano de tal", BankslipsStatusEnum.CANCELED);
+        BankslipsVO persisted = bankslipsService.add(entity);
+
+        BankslipsUpdateVO updateVO = new BankslipsUpdateVO(BankslipsStatusEnum.PENDING);
+        RestAssured.given().contentType("application/json").when().body(updateVO).put("/rest/bankslips/" + persisted.code).then()
+                .statusCode(400)
+                .body("message", equalTo("Invalid status provided - it must be a valid status (PAID or CANCELED)"));
+    }
+
+    @Test
     public void add() {
         BankslipsVO entity = new BankslipsVO(new Date(), BigDecimal.valueOf(1002220000L), "Teste", BankslipsStatusEnum.PENDING);
         RestAssured.given().contentType("application/json").when().body(entity).post("/rest/bankslips").then()
