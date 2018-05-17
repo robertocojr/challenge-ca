@@ -8,6 +8,7 @@ import br.com.challenge.ca.vo.BankslipsVO;
 import io.restassured.RestAssured;
 import org.apache.commons.lang3.time.DateUtils;
 import org.assertj.core.util.DateUtil;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,25 +35,7 @@ public class BankslipsControllerTest {
 
     @BeforeClass
     public static void setup() {
-        String port = System.getProperty("{server.port}");
-        if (port == null) {
-            RestAssured.port = 9292;
-        } else {
-            RestAssured.port = Integer.valueOf(port);
-        }
-
-        String basePath = System.getProperty("server.base");
-        if (basePath == null) {
-            basePath = "/";
-        }
-        RestAssured.basePath = basePath;
-
-        String baseHost = System.getProperty("server.host");
-        if (baseHost == null) {
-            baseHost = "http://localhost";
-        }
-        RestAssured.baseURI = baseHost;
-
+        RestAssured.port = 9292;
     }
 
     @Test
@@ -81,12 +64,12 @@ public class BankslipsControllerTest {
 
     @Test
     public void findByIdDueBetween5Days() {
-        BankslipsVO entity = new BankslipsVO(DateUtil.yesterday(), BigDecimal.valueOf(1000000L), "Fulano de tal", BankslipsStatusEnum.PENDING);
+        BankslipsVO entity = new BankslipsVO(DateUtil.yesterday(), new BigDecimal("1000000"), "Fulano de tal", BankslipsStatusEnum.PENDING);
         BankslipsVO persisted = bankslipsService.add(entity);
 
-        RestAssured.given().when().get("/rest/bankslips/" + persisted.code).then()
-                .statusCode(200)
-                .body("total_in_cents", equalTo(1005000));
+        BankslipsVO bankslipsVO = RestAssured.given().when().get("/rest/bankslips/" + persisted.code).as(BankslipsVO.class);
+
+        Assert.assertEquals(new BigDecimal("1005000"), bankslipsVO.totalInCents.setScale(0));
     }
 
     @Test
@@ -94,9 +77,9 @@ public class BankslipsControllerTest {
         BankslipsVO entity = new BankslipsVO(DateUtils.addDays(DateUtil.yesterday(), -10), BigDecimal.valueOf(1000000L), "Fulano de tal", BankslipsStatusEnum.PENDING);
         BankslipsVO persisted = bankslipsService.add(entity);
 
-        RestAssured.given().when().get("/rest/bankslips/" + persisted.code).then()
-                .statusCode(200)
-                .body("total_in_cents", equalTo(1010000));
+        BankslipsVO bankslipsVO = RestAssured.given().when().get("/rest/bankslips/" + persisted.code).as(BankslipsVO.class);
+
+        Assert.assertEquals(new BigDecimal("1010000"), bankslipsVO.totalInCents.setScale(0));
     }
 
     @Test

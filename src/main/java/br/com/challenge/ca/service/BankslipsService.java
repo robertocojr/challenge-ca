@@ -85,15 +85,13 @@ public class BankslipsService {
 
         Period between = Period.between(LocalDate.now(), dueDate);
 
+        BigDecimal totalInCents = bankslipsEntity.getTotalInCents();
         if (between.getDays() < -10) {
-
-            bankslipsEntity.setTotalInCents(taxService
-                    .incrementPercent(bankslipsEntity.getTotalInCents(), new BigDecimal(bankslipsTaxDue10)).setScale(0));
+            totalInCents = taxService.incrementPercent(totalInCents, new BigDecimal(bankslipsTaxDue10));
         } else if (between.getDays() < 0) {
-            bankslipsEntity.setTotalInCents(taxService
-                    .incrementPercent(bankslipsEntity.getTotalInCents(), new BigDecimal(bankslipsTaxDue)).setScale(0));
+            totalInCents = taxService.incrementPercent(totalInCents, new BigDecimal(bankslipsTaxDue));
         }
-        bankslipsEntity.setTotalInCents(bankslipsEntity.getTotalInCents().setScale(0));
+        bankslipsEntity.setTotalInCents(totalInCents);
         return bankslipsEntity;
     }
 
