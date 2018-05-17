@@ -8,6 +8,10 @@ O objetivo dessa api e disponibilizar uma maneira simples e segura para cuidar d
 * listar todos;
 * buscar por boleto com valor atualizado.
 
+# Documentação
+* http://localhost:8080/swagger-ui.html
+* https://challenge-roberto.herokuapp.com/swagger-ui.html
+
 # Requisitos
 * Java 8 (http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html);
 
