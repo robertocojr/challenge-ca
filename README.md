@@ -35,3 +35,7 @@ O projeto está integrado com o heroku (https://challenge-roberto.herokuapp.com)
 <br><code>{
  "status":"PAID"
 }</code>
+
+# Documentação
+* http://localhost:8080/swagger-ui.html
+* https://challenge-roberto.herokuapp.com/swagger-ui.html
