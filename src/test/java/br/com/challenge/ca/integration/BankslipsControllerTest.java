@@ -1,4 +1,4 @@
-package br.com.challenge.ca;
+package br.com.challenge.ca.integration;
 
 import br.com.challenge.ca.entity.BankslipsEntity;
 import br.com.challenge.ca.enumeration.BankslipsStatusEnum;

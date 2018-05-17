@@ -9,7 +9,9 @@ public enum ErrorEnum {
 
     BANKSLIPS_INVALID_UUID(1002, "Invalid id provided - it must be a valid UUID"),
 
-    BANKSLIPS_INVALID_BODY(1003, "Bankslip not provided in the request body");
+    BANKSLIPS_INVALID_BODY(1003, "Bankslip not provided in the request body"),
+
+    BANKSLIPS_INVALID_STATUS(1004, "Invalid status provided - it must be a valid status (PAID or CANCELED)");
 
     private int code;
 

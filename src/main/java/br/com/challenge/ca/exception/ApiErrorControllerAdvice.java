@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @ControllerAdvice(annotations = RestController.class)
-public class ApiErrorAdvice {
+public class ApiErrorControllerAdvice {
 
     @ExceptionHandler(value = { BankslipsNotFoundException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
