@@ -4,7 +4,7 @@ O objetivo dessa api e disponibilizar uma maneira simples e segura para cuidar d
 
 # Features
 * armazenar boletos;
-* atualizar seu status (PENDING, PAID, CANCELED);
+* atualizar seu status (PENDING, PAID);
 * listar todos;
 * buscar por boleto com valor atualizado.
 
@@ -39,7 +39,3 @@ O projeto está integrado com o heroku (https://challenge-roberto.herokuapp.com)
 <br><code>{
  "status":"PAID"
 }</code>
-
-# Documentação
-* http://localhost:8080/swagger-ui.html
-* https://challenge-roberto.herokuapp.com/swagger-ui.html
