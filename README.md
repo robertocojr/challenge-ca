@@ -24,8 +24,12 @@ O objetivo dessa api e disponibilizar uma maneira simples e segura para cuidar d
 <code>./gradlew bootRun</code>
 
 # Ambiente de testes
-O projeto está integrado com o heroku (https://challenge-roberto.herokuapp.com). Para utilizar o Postman baixe a collection (https://github.com/robertocojr/challenge-ca/blob/master/challenge-ca%20heroku.postman_collection.json)
+O projeto está integrado com o heroku (https://challenge-roberto.herokuapp.com), sendo constantemente atualizado.
+Para utilizar o Postman abaixo as collections:
+* Localhost https://github.com/robertocojr/challenge-ca/blob/master/challenge-ca.postman_collection.json
+* Heroku https://github.com/robertocojr/challenge-ca/blob/master/challenge-ca%20heroku.postman_collection.json
 
+Serviços:
 * findAll: GET - https://challenge-roberto.herokuapp.com/rest/bankslips
 * findById: GET - https://challenge-roberto.herokuapp.com/rest/bankslips/{id}
 * add: POST - https://challenge-roberto.herokuapp.com/rest/bankslips
